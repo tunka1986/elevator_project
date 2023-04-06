@@ -33,7 +33,7 @@ class elevator {
     if (isNaN(step_element[0])) {
       var elevator_name=step_element[0];
     } else {
-      //check if both elevators are on the same floor OR check which elevator is closer || if distance the same pick the one one the lower floor
+      //check if both elevators are on the same floor OR check which elevator is closer OR if the distance is the same then pick the one from the lower floor
       if ((this.position['A'] == this.position['B']) || (Math.abs(this.position['A']-destination_floor) < (Math.abs(this.position['B']-destination_floor))) || ((Math.abs(this.position['A']-destination_floor) == (Math.abs(this.position['B']-destination_floor))) && (this.position['A'] < this.position['B']))){
         var elevator_name='A';
       } else {
@@ -70,7 +70,6 @@ class elevator {
           in_move('down');
         }
         if (current_position == destination_floor) {
-    //      elevator_properties.states[elevator_name]='ready';
           elevator_properties.update_color(elevator_name, destination_floor, 'ready', '');
         }
       }, 1000)
@@ -141,7 +140,6 @@ function draw_system() {
       if (j==2){
         td.style.width ='100px';
         td.innerHTML=`<input type="text" style="text-align: right; background-color: white; font-weight:bold; border: 0;" id="display_A_${i}" size="1" disabled><input type = "button" onclick = "elevator_properties.move_position('_${i}')" value = "­-"><input type="text" style="text-align: left; background-color: white; font-weight:bold; border: 0;" id="display_B_${i}" size="1" disabled>`; 
-        //td.innerHTML=`<input type = "button" onclick = "elevator_properties.move_position('_${i}')" value = "­-">`; 
       }
       if (j == 3) {          
         td.style.border = '1px solid black';
@@ -150,7 +148,6 @@ function draw_system() {
         td.id='B_'.concat(i);
       }
     }
-    //tbl.innerHTML='<hr>';
   }
   body.appendChild(tbl);
 }
@@ -194,7 +191,6 @@ const elevator_names=['A','B'];
 let design_column =4;
 const max_floor = 6;
 const min_floor=0;
-//const elevator_active_floors=[0,6];
 
 let elevator_properties = new elevator(elevator_names, min_floor, max_floor);
 
@@ -203,13 +199,3 @@ draw_system();
 elevator_properties.update_color('A',0,'ready')
 elevator_properties.update_color('B',6,'ready');
 elevator_properties.get_status('A');
-
-
-
-
-//for (let i = 0; i <= current_locations.length; i++) {
-//for (const [key, value] of Object.entries(current_locations)) {
-//  update_color(key,value,'');
-//}
-  //update_color(current_locations.key(i),current_locations[i]);
-
