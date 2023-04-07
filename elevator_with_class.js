@@ -11,14 +11,14 @@ class elevator {
   }
   floor_names(i){
     if (i==0) {
-      return 'Basement';
+      return 'Ground Floor';
     } else {
       return 'Floor '.concat(i);
     }
   }
   panel_buttons(i){
     if (i==0) {
-      return 'B';
+      return 'G';
     } else {
       return i;
     }
